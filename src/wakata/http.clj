@@ -1,19 +1,15 @@
 (ns wakata.http
   (:require [ring.adapter.jetty :as jetty]
-            [clojure.pprint :refer :all]
-            [wakata.controller :as controller]))
+            [compojure.core :refer :all]
+            [wakata.controller :as controller]
+            [ring.middleware.json :refer [wrap-json-response]]
+            [ring.util.response :refer [response]]))
 
-(def routes
-  (array-map
-    #"/schedules/?" controller/schedules
-    #"/add_new/?" controller/add-new))
+(defroutes handler
+  (GET "/schedules" req (controller/schedules req)))
 
-(defn handler [req]
-  (case (:uri req)
-    "/"
-    {:status 200
-     :headers {"Content-Type" "text/html"}
-     :body "ascii goatC"}))
+(def app
+  (wrap-json-response (response handler) ))
 
 (defn start-server [port]
-  (jetty/run-jetty handler {:port port}))
+  (jetty/run-jetty app {:port port}))

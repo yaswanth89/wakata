@@ -1,8 +1,5 @@
-(ns wakata.controller
-  (:require [wakata.db :as db]))
+(ns wakata.controller)
+(defn schedules [req]
+  {:asd "asd"})
 
-(defn schedules [:keys [request-method] :as req]
-  (println request-method))
-
-(defn add-new [:keys [request-method] :as req]
-  (println request-method))
+(defn add-new [req])
