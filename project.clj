@@ -9,5 +9,6 @@
                  [compojure "1.4.0"]
                  [ring/ring-json "0.4.0"]
                  [ring "1.4.0"]
-                 [org.clojure/java.jdbc "0.4.1"]]
+                 [org.clojure/java.jdbc "0.4.1"]
+                 [mysql/mysql-connector-java "5.1.6"]]
   :main wakata.core)

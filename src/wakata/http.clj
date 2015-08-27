@@ -7,7 +7,8 @@
             [ring.util.response :refer [response]]))
 
 (defroutes handler
-  (GET "/schedules" [req] (response (controller/schedules req))))
+  (GET "/schedules" [req] (response (controller/schedules req)))
+  (GET "/rooms" [req] (response (controller/rooms req))))
 
 (def app
   (wrap-json-response handler ))
