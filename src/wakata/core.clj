@@ -1,6 +1,6 @@
-(ns wakata.core)
+(ns wakata.core
+  (:gen-class)
+  (:require [wakata.http :as http]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defn -main []
+  (http/start-server 3000))
