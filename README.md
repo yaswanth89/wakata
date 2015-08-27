@@ -1,10 +1,22 @@
 # wakata
 
-A Clojure library designed to ... well, that part is up to you.
+A web app used to book a conference room in novel tech park (though you need
+internet for this which we do not provide haha!!)
 
 ## Usage
 
-FIXME
+
+## Breakage
+
+* Setup project
+* add db connection
+* create an api where the schedules are being dumped & front end app to show in a tabular form
+* create api to accept new schedules & create front end app to send new schedules
+
+optional
+* create a login
+* let logged in users delete their created schedules
+
 
 ## License
 
