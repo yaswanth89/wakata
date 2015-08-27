@@ -11,12 +11,12 @@ internet for this which we do not provide haha!!)
 * Setup project
 * add db connection
 * create an api where the schedules are being dumped & front end app to show in a tabular form
-* create api to accept new schedules & create front end app to send new schedules
+* create api to accept new schedules & front end app to send new schedules
 
 optional
 * create a login
 * let logged in users delete their created schedules
-
+* create admin interface to update number of conference rooms
 
 ## License
 
