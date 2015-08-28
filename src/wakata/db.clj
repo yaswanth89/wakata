@@ -1,8 +1,11 @@
 (ns wakata.db
-  (:require [clojure.contrib.sql :as sql]))
+  (:require [clojure.java.jdbc :as j]))
 
-(defonce db {:classname "com.mysql.jdbc.Driver"
-         :subprotocol "mysql"
-         :subname "//localhost:3306/wakata"
-         :user "wakata"
-         :password "wakatapass"})
+(defonce db {:subprotocol "mysql"
+             :subname "//localhost:3306/wakata"
+             :user "wakata"
+             :password "wakatapass"})
+
+(defn rooms []
+  (j/query db
+    ["select * from Rooms"]))
