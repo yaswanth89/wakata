@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <form>
+        <select ng-change="getSchedule()" ng-model="selected_room">
+          <option ng-repeat="room in rooms" value="{{room.roomid}}">{{room.roomname}}</option>
+        </select>
+      </form>
+    </div>
+  </div>
+</div>
