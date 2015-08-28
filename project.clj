@@ -10,5 +10,6 @@
                  [ring/ring-json "0.4.0"]
                  [ring "1.4.0"]
                  [org.clojure/java.jdbc "0.4.1"]
-                 [mysql/mysql-connector-java "5.1.6"]]
+                 [mysql/mysql-connector-java "5.1.6"]
+                 [honeysql "0.6.1"]]
   :main wakata.core)
