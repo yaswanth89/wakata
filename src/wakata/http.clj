@@ -8,8 +8,11 @@
             [ring.util.response :refer [response resource-response]]))
 
 (defroutes handler
-  (GET "/schedules" {params :params} (response (controller/schedules params)))
-  (GET "/rooms" [req] (response (controller/rooms req)))
+
+  (context "/api" []
+    (GET "/schedules" {params :params} (response (controller/schedules params)))
+    (GET "/rooms" [req] (response (controller/rooms req))))
+
   (GET "/" [] (resource-response "index.html" {:root "public/dist"}))
   (route/resources "/" {:root "public/dist"})
   (route/not-found (resource-response "404.html" {:root "public/dist"})))
