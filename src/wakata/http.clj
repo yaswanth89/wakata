@@ -8,10 +8,11 @@
             [ring.util.response :refer [response resource-response]]))
 
 (defroutes handler
-
   (context "/api" []
-    (GET "/schedules" {params :params} (response (controller/schedules params)))
-    (GET "/rooms" [req] (response (controller/rooms req))))
+    (GET "/schedule" {params :params}
+      (controller/schedules (clojure.walk/keywordize-keys params)))
+    (GET "/rooms" [req]
+      (controller/rooms req)))
 
   (GET "/" [] (resource-response "index.html" {:root "public/dist"}))
   (route/resources "/" {:root "public/dist"})

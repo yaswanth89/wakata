@@ -1,1 +1,17 @@
-<p>This is the about view.</p>
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th>Time</th>
+        <th ng-repeat="day in next_seven_days">{{day | date : 'EEE, MMMM d'}}</th>
+      </tr>
+      <tr ng-repeat="val in times track by $index">
+        <td>{{val.time}}</td>
+        <td ng-repeat="comp in val.book track by $index">
+          <button ng-show="comp==''" class="btn" ng-click="bookAt($parent.$index,$index)">Book now</button>
+          {{comp}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
