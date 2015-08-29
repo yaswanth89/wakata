@@ -22,3 +22,7 @@
               (db/check-prev-entry room slot date)))))
     (response
       (db/insert-booking room slot date doneby))))
+(defn create [{:keys [roomName] :as req}]
+  (when (seq roomName)
+    (response
+      (db/insert-room roomName))))
