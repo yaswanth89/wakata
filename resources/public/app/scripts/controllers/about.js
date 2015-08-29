@@ -8,14 +8,13 @@
  * Controller of the publicApp
  */
 angular.module('publicApp')
-  .controller('AboutCtrl', function ($scope, $routeParams, api) {
+  .controller('AboutCtrl', function ($scope, $routeParams,$filter, $location, api) {
     var calculateDateOffset= function(date){
       var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
       var firstDate = $scope.startDate;
       var secondDate = new Date(date);
       return Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
     };
-    console.log($routeParams);
     $scope.roomID = $routeParams.roomID;
     $scope.startDate = new Date($routeParams.startDate);
     $scope.times = [
@@ -30,11 +29,11 @@ angular.module('publicApp')
       {time:"19:00 - 20:00",book:["","","","","","",""]},
       {time:"20:00 - 21:00",book:["","","","","","",""]}];
 
-    var today = angular.copy($scope.startDate);
-    $scope.next_seven_days = [today.getTime()];
+    var st = angular.copy($scope.startDate);
+    $scope.next_seven_days = [st.getTime()];
 
     for(var i=0;i<6;i++){
-      $scope.next_seven_days.push(today.setDate(today.getDate() + 1));
+      $scope.next_seven_days.push(st.setDate(st.getDate() + 1));
     }
 
     $scope.from = new Date($scope.next_seven_days[0]).toISOString();
@@ -49,4 +48,11 @@ angular.module('publicApp')
         $scope.times[slot].book[index] = data[i].doneby;
       }
     });
+
+    $scope.bookAt = function(slot,relDate){
+      var bookingDate = angular.copy($scope.startDate);
+      bookingDate.setDate(bookingDate.getDate() + relDate);
+      var str = $filter('date')(bookingDate,"yyyy-MM-dd");
+      $location.path("/make/"+$scope.roomID+"/"+str+"/"+slot);
+    }
   });

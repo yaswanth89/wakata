@@ -12,7 +12,9 @@
     (GET "/schedule" {params :params}
       (controller/schedules (clojure.walk/keywordize-keys params)))
     (GET "/rooms" [req]
-      (controller/rooms req)))
+      (controller/rooms req))
+    (POST "/book" {params :params}
+      (controller/book (clojure.walk/keywordize-keys params))))
 
   (GET "/" [] (resource-response "index.html" {:root "public/dist"}))
   (route/resources "/" {:root "public/dist"})

@@ -21,6 +21,21 @@
                           [:and
                             [:>= :date from]
                             [:<= :date to]]])
-                sql/format)
-        _ (println query)]
+                sql/format)]
     (j/query db query)))
+
+(defn check-prev-entry [room slot date]
+  (let [query (-> (h/select :%count.*)
+                (h/from :bookings)
+                (h/where [:and
+                          [:= :RoomID room]
+                          [:= :slot slot]
+                          [:= :date date]])
+                sql/format)]
+    (j/query db query)))
+
+(defn insert-booking [room slot date doneby]
+    (j/insert! db "bookings" {:RoomID room
+                              :slot slot
+                              :date date
+                              :doneby doneby}))

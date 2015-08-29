@@ -14,5 +14,11 @@
 (defn rooms [req]
   (response (db/rooms)))
 
-(defn add-new [req]
-  (response {:asd "asd"}))
+(defn book [{:keys [room slot date doneby] :as req}]
+  (when (and
+          (every? seq [room slot date doneby])
+          (zero? ((keyword "count(*)")
+            (first
+              (db/check-prev-entry room slot date)))))
+    (response
+      (db/insert-booking room slot date doneby))))

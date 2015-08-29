@@ -32,6 +32,19 @@ angular.module('publicApp')
           deferred.resolve(data);
         });
         return deferred.promise;
+      },
+      makeBooking: function (roomid,slot,date,doneby,description){
+        var deferred = $q.defer();
+        $http.post(apiRoute + '/book',{
+          room:roomid,
+          slot:slot,
+          date:date,
+          doneby:doneby,
+          description:description
+        }).success(function (data) {
+          deferred.resolve(data);
+        });
+        return deferred.promise;
       }
     };
     return api;
