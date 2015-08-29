@@ -39,3 +39,6 @@
                               :slot slot
                               :date date
                               :doneby doneby}))
+
+(defn insert-room [roomName]
+  (j/insert! db "Rooms" {:RoomName roomName}))
