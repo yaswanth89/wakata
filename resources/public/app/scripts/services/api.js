@@ -18,20 +18,21 @@ angular.module('publicApp')
           deferred.resolve(data);
         });
         return deferred.promise;
+      },
+      getScheduleForRoom: function (roomid,from,to,at) {
+        var deferred = $q.defer();
+        $http.get(apiRoute + '/schedule',{
+          params:{
+            room:roomid,
+            from:from,
+            to:to,
+            at:at
+          }
+        }).success(function (data) {
+          deferred.resolve(data);
+        });
+        return deferred.promise;
       }
-      //getScheduleForRoom: function (roomid,from,to) {
-      //  var deferred = $q.defer();
-      //  $http.get(apiRoute + '/schedule',{
-      //    params:{
-      //      roomid:1,
-      //      fromTime:from,
-      //      toTime:to
-      //    }
-      //  }).success(function (data) {
-      //    deferred.resolve(data);
-      //  });
-      //  return deferred.promise;
-      //}
     };
     return api;
   });

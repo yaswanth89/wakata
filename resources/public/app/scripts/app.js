@@ -23,7 +23,7 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/about', {
+      .when('/book/:roomID/:startDate', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'

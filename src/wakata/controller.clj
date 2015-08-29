@@ -8,11 +8,7 @@
 
 (defn schedules [{:keys [room from to at] :as req}]
   (when (every? seq [room from to at])
-    (let [long-from (Long. from)
-          long-to (Long. to)
-          int-room (Integer. room)
-          long-at (Long. at)
-          resp (db/schedule-for-room int-room long-from long-to long-at)]
+    (let [resp (db/schedule-for-room room from to at)]
       (response resp))))
 
 (defn rooms [req]

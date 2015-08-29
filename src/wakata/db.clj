@@ -18,13 +18,9 @@
                 (h/where [:and
                           [:= :RoomID room]
                           [:> :at latest]
-                          [:or
-                           [:and
-                            [:> :fromtime from]
-                            [:< :fromtime to]]
-                           [:and
-                            [:> :totime from]
-                            [:< :totime to]]]])
+                          [:and
+                            [:>= :date from]
+                            [:<= :date to]]])
                 sql/format)
         _ (println query)]
     (j/query db query)))
