@@ -28,6 +28,11 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/make', {
+        templateUrl: 'views/make.html',
+        controller: 'MakeCtrl',
+        controllerAs: 'make'
+      })
       .otherwise({
         redirectTo: '/'
       });
