@@ -8,10 +8,14 @@
  * Controller of the publicApp
  */
 angular.module('publicApp')
-  .controller('CreateCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('CreateCtrl', function ($scope,$window,$location,api) {
+    $scope.createRoom = function(){
+      if($scope.roomName != ""){
+        console.log($scope.roomName);
+        api.createRoom($scope.roomName).then(function(data){
+          $window.alert("Room Created!");
+          $location.path("/");
+        });
+      }
+    }
   });

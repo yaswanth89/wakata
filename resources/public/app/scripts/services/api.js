@@ -45,6 +45,15 @@ angular.module('publicApp')
           deferred.resolve(data);
         });
         return deferred.promise;
+      },
+      createRoom: function(roomName){
+        var deferred = $q.defer();
+        $http.post(apiRoute+'/create',{
+          roomName:roomName
+        }).success(function(data){
+          deferred.resolve(data);
+        });
+        return deferred.promise;
       }
     };
     return api;
