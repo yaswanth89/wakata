@@ -28,7 +28,7 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
-      .when('/make', {
+      .when('/make/:roomID/:date/:slot', {
         templateUrl: 'views/make.html',
         controller: 'MakeCtrl',
         controllerAs: 'make'

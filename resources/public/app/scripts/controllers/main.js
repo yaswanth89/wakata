@@ -8,7 +8,7 @@
  * Controller of the publicApp
  */
 angular.module('publicApp')
-  .controller('MainCtrl', function ($scope, $route, $location ,api) {
+  .controller('MainCtrl', function ($scope, $route, $location, $filter ,api) {
 
     api.allRooms().then(function(data){
       $scope.rooms = data;
@@ -17,9 +17,7 @@ angular.module('publicApp')
       if(!!$scope.selected_room){
         var temp = new Date();
         console.log(temp);
-        var str = ""+ temp.getFullYear();
-        str += "-" + (temp.getMonth() + 1);
-        str += "-" + temp.getDate();
+        var str = $filter('date')(temp,"yyyy-MM-dd");
         $location.path("/book/"+$scope.selected_room +"/"+str);
       }
       else{
